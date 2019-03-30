@@ -34,8 +34,8 @@ func _process(delta):
 		$Trail.emitting = false
 
 	position += velocity * delta
-	position.x = clamp(position.x, 0, screensize.x)
-	position.y = clamp(position.y, 0, screensize.y)
+#	position.x = clamp(position.x, 0, screensize.x)
+#	position.y = clamp(position.y, 0, screensize.y)
 
 	if velocity.x != 0:
 		$AnimatedSprite.animation = "right"

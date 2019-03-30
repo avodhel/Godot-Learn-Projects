@@ -9,7 +9,7 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 1.70602, 3.56798, 0, 0, 0, 0, 482.263, 3.26522, 0, 0, 0, 0, 480.489, 729.458, 0, 0, 0, 0, 0.794434, 732.118, 0, 0, 0, 0, 1.97066, 3.83263 )
+"points": PoolVector2Array( 0, 0, 0, 0, 1.70602, 3.56798, 0, 0, 0, 0, 240.557, -6.27914, 0, 0, 0, 0, 482.263, 3.26522, 0, 0, 0, 0, 480.489, 729.458, 0, 0, 0, 0, 0.794434, 732.118, 0, 0, 0, 0, 1.97066, 3.83263 )
 }
 
 [node name="Main" type="Node"]
@@ -17,11 +17,15 @@ script = ExtResource( 1 )
 Mob = ExtResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 486.0
-margin_bottom = 734.0
+margin_right = 485.0
+margin_bottom = 726.0
 color = Color( 0.253451, 0.425288, 0.429412, 1 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+current = true
+zoom = Vector2( 2, 2 )
 
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -35,6 +39,14 @@ one_shot = true
 [node name="StartPosition" type="Position2D" parent="."]
 position = Vector2( 240, 450 )
 
+[node name="MobPath" type="Path2D" parent="."]
+editor/display_folded = true
+curve = SubResource( 1 )
+
+[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+position = Vector2( 1.70602, 3.56798 )
+rotation = -0.000630111
+
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
@@ -44,13 +56,6 @@ volume_db = -8.0
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 volume_db = -5.0
-
-[node name="MobPath" type="Path2D" parent="."]
-curve = SubResource( 1 )
-
-[node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
-position = Vector2( 1.70602, 3.56798 )
-rotation = -0.000630111
 
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_MobTimer_timeout"]
