@@ -1,6 +1,6 @@
 extends Node2D
 
-var speed = 750
+export var speed = 1500
 var direction = 1
 
 onready var sprite = $Sprite
@@ -27,13 +27,13 @@ func initialize_trunk(axe, right):
 		left_axe.queue_free()
 		right_axe.queue_free()
 
-func remove_trunk(from_right): #detect where punch comes and removes trunk
+func remove_trunk(from_right): #detect where punch comes and removes trunk to opposite direction
 	if from_right:
 		direction = -1
 	else:
 		direction = 1
 	timer.start()
-	set_process(true) # start proceess again
+	set_process(true) # start process again
 
 func _on_Timer_timeout():
 	queue_free()
