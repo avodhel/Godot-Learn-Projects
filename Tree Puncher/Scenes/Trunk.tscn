@@ -15,30 +15,30 @@ script = ExtResource( 1 )
 z_index = 1
 texture = ExtResource( 2 )
 
-[node name="Left Axe" type="Area2D" parent="."]
+[node name="LeftAxe" type="Area2D" parent="."]
 editor/display_folded = true
 position = Vector2( -80, 0 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="Left Axe"]
+[node name="Sprite" type="Sprite" parent="LeftAxe"]
 texture = ExtResource( 3 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Left Axe"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftAxe"]
 shape = SubResource( 1 )
 
-[node name="Right Axe" type="Area2D" parent="."]
+[node name="RightAxe" type="Area2D" parent="."]
 editor/display_folded = true
 position = Vector2( 80, 0 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="Right Axe"]
+[node name="Sprite" type="Sprite" parent="RightAxe"]
 texture = ExtResource( 3 )
 flip_h = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Right Axe"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightAxe"]
 shape = SubResource( 1 )
 
