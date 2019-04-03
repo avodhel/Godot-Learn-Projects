@@ -8,18 +8,18 @@ var distance
 func _ready():
 	randomize()
 	
-	distance = $Player.position - $MobPath2.position
-	print(distance)
+#	distance = $Player.position - $MobPath2.position
+#	print(distance)
 
-func _process(delta):
-	if $Player.position.x < 0 and $Player.position.y < 0:
-		$MobPath2.position = $Player.position - Vector2(distance.x, distance.y)
-	if $Player.position.x > 0 and $Player.position.y > 0:
-		$MobPath2.position = $Player.position - Vector2(distance.x, distance.y)
-	if $Player.position.x < 0 and $Player.position.y > 0:
-		$MobPath2.position = $Player.position - Vector2(distance.x, distance.y)
-	if $Player.position.x > 0 and $Player.position.y < 0:
-		$MobPath2.position = $Player.position - Vector2(distance.x, distance.y)
+#func _process(delta):
+#	if $Player.position.x < 0 and $Player.position.y < 0:
+#		$MobPath2.position = $Player.position - Vector2(distance.x, distance.y)
+#	if $Player.position.x > 0 and $Player.position.y > 0:
+#		$MobPath2.position = $Player.position - Vector2(distance.x, distance.y)
+#	if $Player.position.x < 0 and $Player.position.y > 0:
+#		$MobPath2.position = $Player.position - Vector2(distance.x, distance.y)
+#	if $Player.position.x > 0 and $Player.position.y < 0:
+#		$MobPath2.position = $Player.position - Vector2(distance.x, distance.y)
 
 func new_game():
 	score = 0
@@ -38,11 +38,11 @@ func game_over():
 
 func _on_MobTimer_timeout():
 	# choose a random location on the Path2D
-	$MobPath2/MobSpawnLocation2.set_offset(randi())
+	$Player/MobPath2/MobSpawnLocation2.set_offset(randi())
 	var mob = Mob.instance()
 	add_child(mob)
-	var direction = $MobPath2/MobSpawnLocation2.rotation + PI/2
-	mob.position = $MobPath2/MobSpawnLocation2.global_position
+	var direction = $Player/MobPath2/MobSpawnLocation2.rotation + PI/2
+	mob.position = $Player/MobPath2/MobSpawnLocation2.global_position
 	# add some randomness to the direction
 	direction += rand_range(-PI/4, PI/4)
 	mob.rotation = direction

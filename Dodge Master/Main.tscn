@@ -28,13 +28,21 @@ position = Vector2( 240, 450 )
 current = true
 zoom = Vector2( 2, 2 )
 
+[node name="MobPath2" type="Path2D" parent="Player"]
+position = Vector2( -240, -450 )
+curve = SubResource( 1 )
+
+[node name="MobSpawnLocation2" type="PathFollow2D" parent="Player/MobPath2"]
+position = Vector2( -15.8612, 11.0371 )
+rotation = -0.00961559
+
 [node name="Background" type="ColorRect" parent="Player"]
 show_behind_parent = true
-margin_left = -550.149
-margin_top = -859.988
-margin_right = 249.851
-margin_bottom = -59.9875
-rect_scale = Vector2( 1.32947, 1.79415 )
+margin_left = -232.0
+margin_top = -438.629
+margin_right = 567.718
+margin_bottom = 361.371
+rect_scale = Vector2( 0.576858, 0.899902 )
 color = Color( 0.253451, 0.425288, 0.429412, 1 )
 
 [node name="MobTimer" type="Timer" parent="."]
@@ -45,15 +53,6 @@ wait_time = 0.5
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
-
-[node name="MobPath2" type="Path2D" parent="."]
-position = Vector2( -250, -400 )
-scale = Vector2( 2, 2 )
-curve = SubResource( 1 )
-
-[node name="MobSpawnLocation2" type="PathFollow2D" parent="MobPath2"]
-position = Vector2( -15.8612, 11.0371 )
-rotation = -0.00961559
 
 [node name="MobPath" type="Path2D" parent="."]
 visible = false
