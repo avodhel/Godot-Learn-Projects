@@ -13,11 +13,6 @@ var ended = false
 
 func _ready():
 	guess = (min_guessed + max_guessed) / 2
-	print("-------------------------")
-	print("-------------------------")
-	print("-------------------------")
-	print("Hello from Number Guesser!")
-	print("I'll guess any number that you think between 0 and 1000")
 	message.text = "Is " + str(guess) + " your number ?"
 	
 func _process(delta):
@@ -43,6 +38,7 @@ func _try_guess(type):
 	if max_guessed - min_guessed == 2:
 		ended = true
 		message.text = "Yes! I knew it! Your number is " + str((min_guessed + max_guessed) / 2) + "!"
+		$RightButton.text = "Restart"
 	
 func _end_game():
 	ended = true
@@ -63,7 +59,6 @@ func _on_RightButton_pressed():
 		_restart_game()
 	else:
 		_end_game()
-
 
 func _on_IChoseButton_pressed():
 	ichose_button.hide()
