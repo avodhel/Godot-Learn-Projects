@@ -1,6 +1,10 @@
 extends Node
 
 onready var message = $Message
+onready var greater_button = $GreaterButton
+onready var lesser_button = $LesserButton
+onready var right_button = $RightButton
+onready var ichose_button = $IChoseButton
 
 var guess
 var min_guessed = 0
@@ -43,6 +47,7 @@ func _try_guess(type):
 func _end_game():
 	ended = true
 	message.text = "Yes! I knew it! Your number is " + str(guess) + "!"
+	$RightButton.text = "Restart"
 	
 func _restart_game():
 	get_tree().reload_current_scene()
@@ -58,4 +63,11 @@ func _on_RightButton_pressed():
 		_restart_game()
 	else:
 		_end_game()
-		$RightButton.text = "Restart"
+
+
+func _on_IChoseButton_pressed():
+	ichose_button.hide()
+	message.show()
+	greater_button.show()
+	lesser_button.show()
+	right_button.show()
