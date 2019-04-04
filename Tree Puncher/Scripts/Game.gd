@@ -18,12 +18,12 @@ var score_counter = 0
 var trunks = []
 
 func _ready():
-	score_text.text = str(score_counter)
+	score_text.bbcode_text = "[center]"+str(score_counter)+"[/center]"
 	last_spawn_position = first_trunk_position.position
 	_spawn_first_trunks()
 	
 func _process(delta):
-	score_text.text = str(score_counter)
+	score_text.bbcode_text = "[center]"+str(score_counter)+"[/center]"
 	
 	if dead:
 		return
