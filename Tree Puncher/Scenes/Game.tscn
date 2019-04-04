@@ -1,10 +1,23 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Trunk.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Textures/skybox_sideHills.png" type="Texture" id=3]
 [ext_resource path="res://Textures/dirt_grass.png" type="Texture" id=4]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Textures/Grave.png" type="Texture" id=6]
+[ext_resource path="res://Fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.207843, 0.831373, 0.47451, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.733333, 0.501961, 0.266667, 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 79
+outline_color = Color( 0.207843, 0.831373, 0.47451, 1 )
+font_data = ExtResource( 7 )
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
@@ -13,6 +26,7 @@ trunk_scene = ExtResource( 2 )
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 168.683, 640.216 )
 scale = Vector2( 2.81992, 2.81992 )
+z_index = -10
 texture = ExtResource( 3 )
 
 [node name="Ground" type="Node2D" parent="."]
@@ -40,3 +54,36 @@ position = Vector2( 609.397, 835.257 )
 [node name="FirstTrunkPosition" type="Position2D" parent="."]
 position = Vector2( 352, 928 )
 
+[node name="Grave" type="Sprite" parent="."]
+visible = false
+position = Vector2( 608.698, 965.728 )
+texture = ExtResource( 6 )
+
+[node name="TimeLeft" type="ProgressBar" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -120.062
+margin_top = 64.0
+margin_right = 103.938
+margin_bottom = 128.0
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+max_value = 5.0
+value = 5.0
+percent_visible = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
+
+[node name="ScoreText" type="RichTextLabel" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -83.0
+margin_top = 178.528
+margin_right = 83.0
+margin_bottom = 260.528
+custom_fonts/normal_font = SubResource( 3 )
+custom_colors/default_color = Color( 0.207843, 0.831373, 0.47451, 1 )
+text = "23"
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

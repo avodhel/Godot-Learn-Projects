@@ -11,6 +11,11 @@ func _ready():
 	game = get_parent()
 	center = get_viewport_rect().size.x / 2 #center of the screen
 	offset = abs(position.x - center)
+	connect("area_entered", self, "_on_area_entered")
+	
+func _on_area_entered(area):
+	if area.is_in_group("Axes"):
+		game.die()
 	
 func _input(event):
 	#if mouse clicked or screen touched

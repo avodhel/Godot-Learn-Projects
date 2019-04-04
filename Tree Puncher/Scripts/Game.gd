@@ -3,16 +3,33 @@ extends Node
 export(PackedScene) var trunk_scene
 
 onready var first_trunk_position = $FirstTrunkPosition
+onready var grave = $Grave
+onready var time_left = $TimeLeft
+onready var player = $Player
+onready var timer = $Timer
+onready var score_text = $ScoreText
 
 var last_spawn_position
 var last_has_axe = false
 var last_axe_right = false
+var dead = false
+var score_counter = 0
 
 var trunks = []
 
 func _ready():
+	score_text.text = str(score_counter)
 	last_spawn_position = first_trunk_position.position
 	_spawn_first_trunks()
+	
+func _process(delta):
+	score_text.text = str(score_counter)
+	
+	if dead:
+		return
+	time_left.value -= delta
+	if time_left.value <= 0:
+		die()
 	
 func _spawn_first_trunks():
 	for counter in range(5):
@@ -52,21 +69,19 @@ func punch_tree(from_right):
 	trunks.pop_front() #remove first array element, so first trunk
 	for trunk in trunks:
 		trunk.position.y += trunk.sprite_height
+		
+	time_left.value += 0.25 #after every punch increase time
+	if time_left.value > time_left.max_value:
+		time_left.value = time_left.max_value
+	
+	score_counter += 1
+	
+func die():
+	grave.position.x = player.position.x
+	player.queue_free()
+	timer.start()
+	grave.visible = true
+	dead = true
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+func _on_Timer_timeout():
+	get_tree().reload_current_scene() #restart game

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Textures/Character/zombie_head.png" type="Texture" id=2]
@@ -47,7 +47,10 @@ tracks/2/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 0 ) ]
 }
 
-[node name="Player" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 30.875, 84.4107 )
+
+[node name="Player" type="Area2D"]
 scale = Vector2( 1.5, 1.5 )
 script = ExtResource( 1 )
 
@@ -68,4 +71,8 @@ texture = ExtResource( 5 )
 
 [node name="Animation" type="AnimationPlayer" parent="."]
 anims/punch = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 57.9999 )
+shape = SubResource( 2 )
 
