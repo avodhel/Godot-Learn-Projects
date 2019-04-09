@@ -14,3 +14,6 @@ position = Vector2( -140, -140 )
 [node name="Enemy3" parent="." instance=ExtResource( 2 )]
 position = Vector2( 140, -140 )
 
+[connection signal="was_defeated" from="Enemy" to="." method="_on_Enemy_was_defeated"]
+[connection signal="was_defeated" from="Enemy2" to="." method="_on_Enemy_was_defeated"]
+[connection signal="was_defeated" from="Enemy3" to="." method="_on_Enemy_was_defeated"]

@@ -19,3 +19,7 @@ func _spawn_formation():
 	var new_formation = formation.instance()
 	new_formation.position = Vector2(position_x, position_y)
 	add_child(new_formation)
+	new_formation.connect("formation_defeated", self, "_on_formation_defeated")
+	
+func _on_formation_defeated(): #when formation_defeted signal emit, this func starts to work
+	_spawn_formation() #spawn new formation

@@ -1,5 +1,7 @@
 extends Area2D
 
+signal was_defeated
+
 onready var shoot_timer = $ShootTimer
 onready var collision = $CollisionShape2D
 
@@ -18,6 +20,9 @@ func _process(delta):
 		_shoot()
 		
 func _shoot():
+	if dead: # if enemy is dead, can't shoot to our ship
+		return
+
 	var new_projectile = projectile.instance()
 	new_projectile.position = global_position
 	get_tree().get_root().add_child(new_projectile)
@@ -30,6 +35,7 @@ func add_damage(damage):
 		dead = true
 		collision.queue_free()
 		hide()
+		emit_signal("was_defeated")
 
 func _on_ShootTimer_timeout():
 	can_shoot = true
