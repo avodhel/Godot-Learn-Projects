@@ -7,6 +7,7 @@ export (PackedScene) var projectile
 onready var sprite = $Sprite
 onready var shoot_timer = $ShootTimer
 onready var restart_timer = $RestartTimer
+onready var laser_sound = $LaserSound
 
 var screensize
 var half_sprite_size
@@ -29,6 +30,7 @@ func _process(delta):
 		get_parent().add_child(new_projectile) #adding projectiles to main scene as child
 		new_projectile.position = position #setting player's position to projectile
 		shoot_timer.start()
+		laser_sound.play()
 		
 	position.x = clamp(position.x, half_sprite_size, screensize.x - half_sprite_size)
 
