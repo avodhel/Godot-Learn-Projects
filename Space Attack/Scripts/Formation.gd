@@ -36,6 +36,7 @@ func movement(delta):
 		is_in_position = true
 
 func _defeated():
+	yield(get_tree().create_timer(1), "timeout")
 	emit_signal("formation_defeated")
 	queue_free()
 
