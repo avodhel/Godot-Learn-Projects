@@ -17,6 +17,7 @@ _global_script_class_icons={
 
 config/name="Tree Puncher"
 run/main_scene="res://Scenes/Game.tscn"
+boot_splash/image="res://nordicebeargames_splash.png"
 config/icon="res://icon.png"
 
 [display]
