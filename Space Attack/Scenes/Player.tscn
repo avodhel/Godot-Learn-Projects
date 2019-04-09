@@ -10,6 +10,7 @@ radius = 37.4959
 [node name="Player" type="KinematicBody2D"]
 z_index = 2
 script = ExtResource( 1 )
+health = 50
 projectile = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -21,4 +22,8 @@ shape = SubResource( 1 )
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 0.25
 
+[node name="RestartTimer" type="Timer" parent="."]
+wait_time = 3.0
+
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
+[connection signal="timeout" from="RestartTimer" to="." method="_on_RestartTimer_timeout"]
