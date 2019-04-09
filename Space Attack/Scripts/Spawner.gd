@@ -7,10 +7,8 @@ var offset = 100
 
 func _ready():
 	center = get_viewport().get_visible_rect().size.x / 2
+	yield(get_tree().create_timer(2), "timeout") # wait 2 seconds to spawn first enemy group
 	_spawn_formation()
-
-func _process(delta):
-	pass
 	
 func _spawn_formation():
 	randomize() # more random
@@ -22,4 +20,5 @@ func _spawn_formation():
 	new_formation.connect("formation_defeated", self, "_on_formation_defeated")
 	
 func _on_formation_defeated(): #when formation_defeted signal emit, this func starts to work
+	yield(get_tree().create_timer(5), "timeout") # wait 5 seconds to spawn new enemy group
 	_spawn_formation() #spawn new formation
