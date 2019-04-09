@@ -8,6 +8,7 @@ onready var sprite = $Sprite
 onready var shoot_timer = $ShootTimer
 onready var restart_timer = $RestartTimer
 onready var laser_sound = $LaserSound
+onready var health_bar = $HealthBar
 
 var screensize
 var half_sprite_size
@@ -17,6 +18,8 @@ var dead = false
 func _ready():
 	screensize = get_viewport_rect().size
 	half_sprite_size = (sprite.texture.get_width() * scale.x) / 2
+	health_bar.max_value = health
+	health_bar.value = health
 
 func _process(delta):
 	if Input.is_action_pressed("left"):
@@ -41,12 +44,15 @@ func add_damage(damage):
 	if dead:
 		return
 	health -= damage
+	health_bar.value = health
 	if health <= 0:
 		dead = true
 		health = 0
+		health_bar.value = health
 		restart_timer.start()
 		set_process(false)
 		sprite.queue_free()
+		health_bar.queue_free()
 
 func _on_RestartTimer_timeout():
 	get_tree().reload_current_scene()

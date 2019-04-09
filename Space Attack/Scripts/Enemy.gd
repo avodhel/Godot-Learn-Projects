@@ -5,6 +5,7 @@ signal was_defeated
 onready var shoot_timer = $ShootTimer
 onready var collision = $CollisionShape2D
 onready var audio = $Audio
+onready var health_bar = $HealthBar
 
 export var speed = 50
 export var health = 30
@@ -17,6 +18,8 @@ var can_shoot = true
 
 func _ready():
 	audio.stream = shoot_audio
+	health_bar.max_value = health
+	health_bar.value = health
 	
 func _process(delta):
 	if can_shoot:
@@ -35,8 +38,11 @@ func _shoot():
 	
 func add_damage(damage):
 	health -= damage
+	health_bar.value = health
 	if health <= 0:
 		dead = true
+		health = 0
+		health_bar.value = health
 		collision.queue_free()
 		hide()
 		emit_signal("was_defeated")

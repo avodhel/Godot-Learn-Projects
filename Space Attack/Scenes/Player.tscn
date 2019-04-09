@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/PlayerProjectile.tscn" type="PackedScene" id=2]
@@ -7,6 +7,12 @@
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 37.4959
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.439216, 0.772549, 0.215686, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.827451, 0.882353, 0.905882, 1 )
 
 [node name="Player" type="KinematicBody2D"]
 z_index = 2
@@ -27,6 +33,20 @@ wait_time = 3.0
 
 [node name="LaserSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -38.0
+margin_top = 44.7052
+margin_right = 38.0
+margin_bottom = 58.7052
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
+value = 100.0
+percent_visible = false
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
 [connection signal="timeout" from="RestartTimer" to="." method="_on_RestartTimer_timeout"]

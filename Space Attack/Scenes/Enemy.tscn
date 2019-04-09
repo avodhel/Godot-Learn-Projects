@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Enemy.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/EnemyProjectile.tscn" type="PackedScene" id=2]
@@ -8,6 +8,12 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 39.9294, 40.8779 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.733333, 0.423529, 0.180392, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.933333, 0.933333, 0.933333, 1 )
 
 [node name="Enemy" type="Area2D" groups=[
 "Enemies",
@@ -27,5 +33,17 @@ shape = SubResource( 1 )
 wait_time = 1.5
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -35.0
+margin_top = -63.3783
+margin_right = 35.0
+margin_bottom = -49.3783
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
+value = 56.0
+percent_visible = false
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
