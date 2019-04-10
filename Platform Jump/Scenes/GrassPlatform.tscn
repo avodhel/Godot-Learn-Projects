@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/NormalPlatform.gd" type="Script" id=1]
+[ext_resource path="res://Textures/Platforms/ground_grass.png" type="Texture" id=2]
+
+[node name="GrassPlatform" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -175.475, -47.7172, 175.832, -46.4725, 187.565, -39.2525, 190.272, -17.5925, 160.49, 32.9475, -157.19, 47.3875, -191.485, -13.08, -187.875, -40.155 )
+
