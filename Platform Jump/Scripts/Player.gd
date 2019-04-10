@@ -21,7 +21,7 @@ func _ready():
 	current_gravity = GRAVITY
 	
 func _process(delta):
-	if !jumping:
+	if !jumping: # if player doesn't jump
 		_increment_gravity(delta)
 		position.y += current_gravity * delta #player falls down to the screen
 	else:
