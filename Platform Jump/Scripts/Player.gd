@@ -1,10 +1,13 @@
 extends KinematicBody2D
 
+export (int) var speed = 500
+
 onready var animated_sprite = $AnimatedSprite
 
 const GRAVITY = 1500
 const GRAVITY_INCREMENT = 2500
 const JUMP_DECREMENT = 100
+const JUMP_FORCE = 40
 
 var screen_width
 var half_sprite_width
@@ -18,4 +21,36 @@ func _ready():
 	current_gravity = GRAVITY
 	
 func _process(delta):
-	pass
+	if !jumping:
+		_increment_gravity(delta)
+		position.y += current_gravity * delta #player falls down to the screen
+	else:
+		position.y -= current_jump_force
+		_decrement_jump(delta)
+		
+	if Input.is_action_pressed("ui_left"):
+		position.x -= speed * delta
+	elif Input.is_action_pressed("ui_right"):
+		position.x += speed * delta
+	elif Input.is_action_pressed("ui_accept"):
+		jump()
+
+func jump():
+	if jumping:
+		return
+	current_gravity = 0
+	jumping = true
+	current_jump_force = JUMP_FORCE
+	animated_sprite.play("jump")
+
+func _increment_gravity(delta):
+	current_gravity += GRAVITY_INCREMENT * delta
+	if current_gravity >= GRAVITY:
+		current_gravity = GRAVITY
+		
+func _decrement_jump(delta):
+	current_jump_force -= JUMP_DECREMENT * delta
+	if current_jump_force <= 0:
+		current_jump_force = 0
+		jumping = false
+		animated_sprite.play("idle")
