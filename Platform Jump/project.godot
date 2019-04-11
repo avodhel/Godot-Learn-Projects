@@ -16,8 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Platform Jump"
-run/main_scene="res://Scenes/Game.tscn"
+run/main_scene="res://Scenes/Menu.tscn"
 config/icon="res://Textures/icon.png"
+
+[autoload]
+
+LevelManager="*res://Scripts/LevelManager.gd"
 
 [display]
 
