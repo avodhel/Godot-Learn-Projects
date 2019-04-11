@@ -18,9 +18,6 @@ func _ready():
 	current_max_interval = MAX_INTERVAL
 	_spawn_first_platforms()
 
-func _process(delta):
-	pass
-	
 func _spawn_first_platforms():
 	for counter in range(INITIAL_PLATFORMS_COUNT):
 		_spawn_platform()
@@ -41,11 +38,6 @@ func _spawn_platform():
 	current_min_interval = clamp(current_min_interval, MIN_INTERVAL, MAX_INTERVAL / 0.75)
 	current_max_interval = clamp(current_max_interval, MIN_INTERVAL, MAX_INTERVAL)
 	
-	
-	
-	
-	
-	
-	
-	
-	
+func _on_Player_just_jumped():#when player jumps
+	for counter in range(3):
+		_spawn_platform()

@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal just_jumped
+
 export (int) var speed = 500
 
 onready var animated_sprite = $AnimatedSprite
@@ -14,6 +16,8 @@ var half_sprite_width
 var jumping = false
 var current_jump_force = 0
 var current_gravity = 0
+var highest_reached_position = 300
+var death_position_offset = 1200
 
 func _ready():
 	screen_width = get_viewport_rect().size.x
@@ -27,13 +31,19 @@ func _process(delta):
 	else:
 		position.y -= current_jump_force
 		_decrement_jump(delta)
-		
+	
+	highest_reached_position = position.y if position.y < highest_reached_position else highest_reached_position
+	if position.y >= highest_reached_position + death_position_offset:
+		die()
+	
 	if Input.is_action_pressed("ui_left"):
 		position.x -= speed * delta
 	elif Input.is_action_pressed("ui_right"):
 		position.x += speed * delta
 	elif Input.is_action_pressed("ui_accept"):
 		jump()
+	
+	_check_boundaries() #if player goes out of screen, teleport player the other side
 
 func jump():
 	if jumping:
@@ -42,6 +52,11 @@ func jump():
 	jumping = true
 	current_jump_force = JUMP_FORCE
 	animated_sprite.play("jump")
+	emit_signal("just_jumped")
+
+func die():
+#	yield(get_tree().create_timer(2), "timeout")
+	get_tree().reload_current_scene()
 
 func _increment_gravity(delta):
 	current_gravity += GRAVITY_INCREMENT * delta
@@ -54,3 +69,12 @@ func _decrement_jump(delta):
 		current_jump_force = 0
 		jumping = false
 		animated_sprite.play("idle")
+
+func _check_boundaries():#if player goes out of screen, teleport player the other side
+	if position.x > screen_width:
+		position.x = 0
+	elif position.x < 0:
+		position.x = screen_width
+
+
+
