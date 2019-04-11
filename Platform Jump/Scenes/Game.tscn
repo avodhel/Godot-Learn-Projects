@@ -36,6 +36,7 @@ position = Vector2( 169.998, 160.725 )
 position = Vector2( 204.055, 486.142 )
 
 [node name="UI" type="CanvasLayer" parent="."]
+editor/display_folded = true
 layer = 5
 
 [node name="Score" type="RichTextLabel" parent="UI"]

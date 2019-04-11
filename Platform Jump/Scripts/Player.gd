@@ -67,7 +67,8 @@ func add_impulse(impulse): #when player steps on spring
 
 func die():
 #	yield(get_tree().create_timer(2), "timeout")
-	get_tree().reload_current_scene()
+	$"/root/PlayerData".save_highscore(score) #save highscore
+	$"/root/LevelManager".change_scene("Menu") #back to the menu
 
 func _increment_gravity(delta):
 	current_gravity += GRAVITY_INCREMENT * delta
