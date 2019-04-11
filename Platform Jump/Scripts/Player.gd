@@ -5,6 +5,7 @@ signal just_jumped
 export (int) var speed = 500
 
 onready var animated_sprite = $AnimatedSprite
+onready var jump_audio = $JumpAudio
 
 const GRAVITY = 1500
 const GRAVITY_INCREMENT = 2500
@@ -56,6 +57,7 @@ func jump():
 	jumping = true
 	current_jump_force = JUMP_FORCE
 	animated_sprite.play("jump")
+	jump_audio.play()
 	emit_signal("just_jumped")
 
 func add_impulse(impulse): #when player steps on spring

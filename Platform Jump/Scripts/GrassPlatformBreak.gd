@@ -3,6 +3,7 @@ extends Area2D
 onready var sprite = $Sprite
 onready var collision = $Collision
 onready var particles = $Particles
+onready var break_audio = $BreakAudio
 
 var sprite_half_width
 
@@ -17,3 +18,4 @@ func _on_body_entered(body):
 			sprite.queue_free()
 			collision.queue_free()
 			particles.emitting = true
+			break_audio.play()
