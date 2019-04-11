@@ -17,23 +17,11 @@ script = ExtResource( 1 )
 platforms = [ ExtResource( 2 ), ExtResource( 3 ) ]
 special_platforms = [ ExtResource( 4 ), ExtResource( 5 ) ]
 
-[node name="GrassPlatform" parent="." instance=ExtResource( 2 )]
-position = Vector2( 500.721, 1159.08 )
-
-[node name="GrassPlatform2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 228.724, 945.806 )
-
-[node name="GrassPlatform3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 528.539, 720.173 )
-
-[node name="GrassPlatform5" parent="." instance=ExtResource( 2 )]
-position = Vector2( 522.357, 318.359 )
-
-[node name="GrassPlatform6" parent="." instance=ExtResource( 2 )]
-position = Vector2( 169.998, 160.725 )
-
 [node name="Player" parent="." instance=ExtResource( 6 )]
-position = Vector2( 204.055, 486.142 )
+position = Vector2( 362.46, 546.709 )
+
+[node name="GrassPlatform" parent="." instance=ExtResource( 2 )]
+position = Vector2( 354.082, 913.16 )
 
 [node name="UI" type="CanvasLayer" parent="."]
 editor/display_folded = true

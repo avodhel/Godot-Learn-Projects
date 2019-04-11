@@ -19,3 +19,6 @@ func _on_body_entered(body):
 			collision.queue_free()
 			particles.emitting = true
 			break_audio.play()
+
+func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()

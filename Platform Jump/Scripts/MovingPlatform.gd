@@ -19,3 +19,6 @@ func _process(delta):
 		direction = -1
 	elif direction < 0 and path_follow.unit_offset < 0.01: #if moving left 
 		direction = 1
+
+func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()

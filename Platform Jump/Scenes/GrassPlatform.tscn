@@ -13,3 +13,6 @@ texture = ExtResource( 2 )
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -175.475, -47.7172, 175.832, -46.4725, 187.565, -39.2525, 190.272, -17.5925, 160.49, 32.9475, -157.19, 47.3875, -191.485, -13.08, -187.875, -40.155 )
 
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
