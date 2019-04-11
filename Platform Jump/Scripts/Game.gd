@@ -1,10 +1,12 @@
 extends Node
 
 export (Array, PackedScene) var platforms
+export (Array, PackedScene) var special_platforms
 
 const MIN_INTERVAL = 100 #min interval between two platforms
 const MAX_INTERVAL = 250 #max interval between two platforms
 const INITIAL_PLATFORMS_COUNT = 40 #max platform number on the screen
+const SPECIAL_PLATFORM_CHANCE = 20
 
 var current_min_interval
 var current_max_interval
@@ -26,8 +28,13 @@ func _spawn_platform():
 	var index
 	var new_platform
 	
-	index = rand_range(0, platforms.size())
-	new_platform = platforms[index].instance()
+	if rand_range(0, 100) > 100 - SPECIAL_PLATFORM_CHANCE:
+		index = rand_range(0, special_platforms.size())
+		new_platform = special_platforms[index].instance()
+	else:
+		index = rand_range(0, platforms.size())
+		new_platform = platforms[index].instance()
+	
 	add_child(new_platform)
 	var spawn_x = rand_range(0+ new_platform.sprite_half_width, screen_size - new_platform.sprite_half_width)
 	var spawn_position = Vector2(spawn_x, last_spawn_height)

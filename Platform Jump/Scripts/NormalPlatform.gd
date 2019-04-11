@@ -11,6 +11,7 @@ func _ready():
 	randomize()
 	connect("body_entered", self, "_on_body_entered") 
 	sprite_half_width = (sprite.texture.get_size().x / 2) * scale.x
+	
 	if rand_range(0, 100) > 100 - SPRING_CHANCE:
 		var new_spring = load(spring_path).instance()
 		add_child(new_spring)
