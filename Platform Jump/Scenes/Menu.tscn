@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Textures/Background/bg_layer1.png" type="Texture" id=1]
 [ext_resource path="res://Textures/Background/bg_layer2.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Fonts/akaDylan_96.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Styles/new_theme.tres" type="Theme" id=6]
 [ext_resource path="res://Styles/new_styleboxflat.tres" type="StyleBox" id=7]
+[ext_resource path="res://Fonts/akaDylan_64.tres" type="DynamicFont" id=8]
 
 [node name="Menu" type="Node"]
 
@@ -68,10 +69,10 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -336.0
-margin_top = 364.015
+margin_top = 398.329
 margin_right = 336.0
-margin_bottom = 524.015
-custom_fonts/normal_font = ExtResource( 5 )
+margin_bottom = 499.329
+custom_fonts/normal_font = ExtResource( 8 )
 custom_colors/default_color = Color( 0.788235, 0.54902, 0.309804, 1 )
 bbcode_enabled = true
 bbcode_text = "[center]Highscore[/center]"
@@ -83,10 +84,10 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -336.0
-margin_top = 474.344
+margin_top = 503.425
 margin_right = 336.0
-margin_bottom = 634.344
-custom_fonts/normal_font = ExtResource( 5 )
+margin_bottom = 599.425
+custom_fonts/normal_font = ExtResource( 8 )
 custom_colors/default_color = Color( 0.788235, 0.54902, 0.309804, 1 )
 bbcode_enabled = true
 bbcode_text = "[center]125[/center]"
