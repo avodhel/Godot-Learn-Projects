@@ -54,6 +54,13 @@ func jump():
 	animated_sprite.play("jump")
 	emit_signal("just_jumped")
 
+func add_impulse(impulse): #when player steps on spring
+	emit_signal("just_jumped")
+	current_gravity = 0
+	jumping = true
+	current_jump_force = impulse
+	animated_sprite.play("jump")
+
 func die():
 #	yield(get_tree().create_timer(2), "timeout")
 	get_tree().reload_current_scene()

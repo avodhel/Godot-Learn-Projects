@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/Spring.gd" type="Script" id=1]
+[ext_resource path="res://Textures/Items/spring.png" type="Texture" id=2]
+[ext_resource path="res://Textures/Items/spring_in.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Items/spring_out.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ) ],
+"loop": false,
+"name": "spring",
+"speed": 10.0
+} ]
+
+[node name="Spring" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="Animation" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "idle"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -67.9292, -37.4937, 66.8885, -34.714, 72.448, -30.5443, 72.448, 2.3493, 67.3518, 7.44551, 52.5265, 7.44551, 30.7518, 38.9493, -24.1627, 39.0537, -47.0493, 6.48438, -65.6127, 5.12906, -69.7823, 0.0328522, -73.0254, -31.4709 )
+
