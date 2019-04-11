@@ -15,7 +15,7 @@ script = ExtResource( 1 )
 
 [node name="Background" type="Sprite" parent="."]
 editor/display_folded = true
-position = Vector2( 160, 534.192 )
+position = Vector2( 96, 576 )
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true

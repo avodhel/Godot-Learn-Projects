@@ -3,6 +3,9 @@ extends Node
 export (Array, PackedScene) var platforms
 export (Array, PackedScene) var special_platforms
 
+onready var player = $Player
+onready var score_text = $UI/Score
+
 const MIN_INTERVAL = 100 #min interval between two platforms
 const MAX_INTERVAL = 250 #max interval between two platforms
 const INITIAL_PLATFORMS_COUNT = 40 #max platform number on the screen
@@ -19,6 +22,9 @@ func _ready():
 	current_min_interval = MIN_INTERVAL
 	current_max_interval = MAX_INTERVAL
 	_spawn_first_platforms()
+
+func _process(delta):
+	score_text.text = str(player.score)
 
 func _spawn_first_platforms():
 	for counter in range(INITIAL_PLATFORMS_COUNT):
