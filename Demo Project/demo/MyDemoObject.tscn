@@ -4,7 +4,7 @@
 [ext_resource path="res://icon.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 27.2099, 29.6843 )
+extents = Vector2( 23.9928, 23.5756 )
 
 [node name="MyDemoObject" type="Area2D" groups=[
 "my_demo",

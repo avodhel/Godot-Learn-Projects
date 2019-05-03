@@ -24,4 +24,4 @@ func _control(delta):
 	_move(delta)
 
 func _move(delta):
-	position += (velocity * delta ).normalized() * 5
+	position += (velocity * delta ).normalized() * 3
