@@ -4,14 +4,20 @@ const MAX_SPEED = 50
 const MAX_FORCE = 1
 var velocity = Vector2()
 onready var target = self.position
-
 export (int, "SEEK", "FLEE") var mode = 0
+
+const DETECT_RADIUS = 200
+const FOV = 80
+
+var angle = 0
+var direction = Vector2()
 
 func _ready():
 	set_physics_process(true)
 
 func _physics_process(delta):
 	_move(delta)
+	_draw_fov(delta)
 
 func _move(delta):
 	velocity = steer(target)
@@ -28,3 +34,57 @@ func steer(target):
 	var steer = desired_velocity - velocity
 	var target_velocity = velocity + (steer * MAX_FORCE)
 	return(target_velocity)
+
+func _draw_fov(delta):
+	var pos = self.position
+	direction = (get_global_mouse_position() - pos).normalized()
+	angle = 90 - rad2deg(direction.angle())
+
+	var detect_count = 0
+	for node in get_tree().get_nodes_in_group('detectable'):
+		if pos.distance_to(node.pos) < DETECT_RADIUS:
+			var angle_to_node = rad2deg(direction.angle_to(node.direction_from_player))
+			if abs(angle_to_node) < FOV/2:
+				detect_count += 1
+
+
+	# DRAWING
+	if detect_count > 0:
+		draw_color = RED
+	else:
+		draw_color = GREEN
+	update()
+
+# Drawing the FOV
+const RED = Color(1.0, 0, 0, 0.4)
+const GREEN = Color(0, 1.0, 0, 0.4)
+
+var draw_color = GREEN
+
+
+func _draw():
+	draw_circle_arc_poly(Vector2(), DETECT_RADIUS,  angle - FOV/2, angle + FOV/2, draw_color)
+
+
+func draw_circle_arc_poly(center, radius, angle_from, angle_to, color):
+    var nb_points = 32
+    var points_arc = PoolVector2Array()
+    points_arc.push_back(center)
+    var colors = PoolColorArray([color])
+
+    for i in range(nb_points+1):
+        var angle_point = angle_from + i*(angle_to-angle_from)/nb_points
+        points_arc.push_back(center + Vector2( cos( deg2rad(angle_point) ), sin( deg2rad(angle_point) ) ) * radius)
+    draw_polygon(points_arc, colors)
+
+
+
+
+
+
+
+
+
+
+
+
