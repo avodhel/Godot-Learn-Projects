@@ -33,6 +33,9 @@ func _load_scene(path, set_name):
 		add_child(obj_instance)
 		obj_instance.set_script(preload("res://demo/MyDemoObject.gd"))
 		obj_instance.position = my_demo_object.position
+		obj_instance.scale = Vector2(1, 1)
+		obj_instance.add_to_group("my_demo")
+#		obj_instance.call_deferred("add_child", deneme)
 
 func _on_ObjectTimer_timeout():
 	demo_spawn_loc.set_offset(randi())

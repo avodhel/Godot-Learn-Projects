@@ -5,7 +5,7 @@ signal object_died(whichobject)
 export (float) var min_scale = 0.5
 export (float) var max_scale = 2.5
 
-onready var coll = $CollisionShape2D
+onready var coll = $coll
 
 var velocity = Vector2()
 var direction 

@@ -9,7 +9,7 @@ script = ExtResource( 1 )
 margin_right = 158.0
 margin_bottom = 35.0
 rect_scale = Vector2( 3, 3 )
-text = "Choose Object"
+text = "Choose a Team"
 align = 1
 valign = 1
 
@@ -17,7 +17,6 @@ valign = 1
 position = Vector2( 250.167, 328.088 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-editor/display_folded = true
 margin_left = 16.0
 margin_top = 581.314
 margin_right = 464.0
@@ -25,22 +24,22 @@ margin_bottom = 654.314
 alignment = 1
 
 [node name="Button1" type="Button" parent="HBoxContainer"]
-margin_left = 119.0
-margin_right = 186.0
+margin_left = 135.0
+margin_right = 190.0
 margin_bottom = 73.0
-text = "Object 1"
+text = "Square"
 
 [node name="Button2" type="Button" parent="HBoxContainer"]
-margin_left = 190.0
-margin_right = 257.0
+margin_left = 194.0
+margin_right = 246.0
 margin_bottom = 73.0
-text = "Object 2"
+text = "Round"
 
 [node name="Button3" type="Button" parent="HBoxContainer"]
-margin_left = 261.0
-margin_right = 328.0
+margin_left = 250.0
+margin_right = 312.0
 margin_bottom = 73.0
-text = "Object 3"
+text = "Triangle"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 editor/display_folded = true
