@@ -1,6 +1,6 @@
 extends Area2D
 
-const MAX_SPEED = 50
+const MAX_SPEED = 35
 const MAX_FORCE = 1
 var velocity = Vector2()
 onready var target = self.position
@@ -37,13 +37,17 @@ func steer(target):
 
 func _draw_fov(delta):
 	var pos = self.position
-	direction = (get_global_mouse_position() - pos).normalized()
-	angle = 90 - rad2deg(direction.angle())
+	if mode == 0: #seek
+		direction = (pos - get_global_mouse_position()).normalized()
+		angle = 180 + rad2deg(direction.angle())
+	elif mode == 1: #flee
+		direction = (get_global_mouse_position() - pos).normalized()
+		angle = 180 + rad2deg(direction.angle())
 
 	var detect_count = 0
 	for node in get_tree().get_nodes_in_group('detectable'):
-		if pos.distance_to(node.pos) < DETECT_RADIUS:
-			var angle_to_node = rad2deg(direction.angle_to(node.direction_from_player))
+		if pos.distance_to(node.position) < DETECT_RADIUS:
+			var angle_to_node = rad2deg(direction.angle_to((get_global_mouse_position() - node.position).normalized()))
 			if abs(angle_to_node) < FOV/2:
 				detect_count += 1
 
