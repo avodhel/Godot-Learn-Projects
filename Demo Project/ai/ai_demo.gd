@@ -1,23 +1,24 @@
 extends Area2D
 
-const MAX_SPEED = 35
-const MAX_FORCE = 1
-var velocity = Vector2()
-onready var target = self.position
 export (int, "SEEK", "FLEE") var mode = 0
 
+const MAX_SPEED = 45
+const MAX_FORCE = 1
 const DETECT_RADIUS = 200
 const FOV = 80
 
+onready var target = self.position
+
 var angle = 0
 var direction = Vector2()
+var velocity = Vector2()
 
 func _ready():
 	set_physics_process(true)
 
 func _physics_process(delta):
 	_move(delta)
-	_draw_fov(delta)
+	_fov_movement(delta)
 
 func _move(delta):
 	velocity = steer(target)
@@ -35,7 +36,7 @@ func steer(target):
 	var target_velocity = velocity + (steer * MAX_FORCE)
 	return(target_velocity)
 
-func _draw_fov(delta):
+func _fov_movement(delta):
 	var pos = self.position
 	if mode == 0: #seek
 		direction = (pos - get_global_mouse_position()).normalized()
