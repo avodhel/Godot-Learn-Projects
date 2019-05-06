@@ -26,3 +26,4 @@ texture = ExtResource( 5 )
 visible = false
 shape = SubResource( 1 )
 
+[connection signal="area_entered" from="." to="." method="_on_MyDemoObject_area_entered"]

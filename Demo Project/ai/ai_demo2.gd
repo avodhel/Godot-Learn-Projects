@@ -29,13 +29,15 @@ func move(delta):
 
 func _on_ai_demo2_area_entered(area):
 	if !area.is_in_group("ai_demo_fov"):
-		print("bodycoll2 ile temas sağlandı")
-		print(area.name)
-		print(area.scale)
+#		print("bodycoll2 ile temas sağlandı")
+#		print(area.name)
+#		print(area.scale)
+		pass
 
 
 func _on_Visibility_area_entered(area):
 	if !area.is_in_group("ai_demo"):
-		print("visibility2 alanına girildi")
-		print(area.name)
-		print(area.scale)
+#		print("visibility2 alanına girildi")
+#		print(area.name)
+#		print(area.scale)
+		pass

@@ -27,7 +27,8 @@ func _process(delta):
 #	print(body.name)
 
 func _on_demo_area_entered(area):
-	if area.scale > scale:
+#	print("area's name: " +  area.name)
+	if area.scale > scale and area.name != "fov": #because fov area is not for destroy
 #		hide()
 #		coll.disabled = true
 
@@ -39,3 +40,7 @@ func _on_demo_area_entered(area):
 			emit_signal("object_died", "demo3")
 		
 		call_deferred("free")
+
+func _on_fov_area_entered(area):
+#	print(area.name)
+	pass
