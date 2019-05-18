@@ -1,3 +1,0 @@
-# Pong
-
-Sample Godot Game
