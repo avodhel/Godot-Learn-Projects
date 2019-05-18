@@ -1,5 +1,5 @@
 # Godot Sample Projects
 
-Repository for Godot Sample Projects
+Projects to learn Godot which created and coded by me with some various tutorial's help.
 
 #ʕ•㉨•ʔ

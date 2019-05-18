@@ -17,7 +17,7 @@ _global_script_class_icons={
 
 config/name="Platform Jump"
 run/main_scene="res://Scenes/Menu.tscn"
-config/icon="res://Textures/icon.png"
+config/icon="res://Textures/Player/bunny1_ready.png"
 
 [autoload]
 

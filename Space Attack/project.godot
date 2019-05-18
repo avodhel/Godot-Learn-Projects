@@ -17,7 +17,7 @@ _global_script_class_icons={
 
 config/name="Space Attack"
 run/main_scene="res://Scenes/Main.tscn"
-config/icon="res://Textures/icon.png"
+config/icon="res://Textures/playerShip3_green.png"
 
 [display]
 
