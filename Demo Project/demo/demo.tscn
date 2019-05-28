@@ -27,6 +27,7 @@ region_rect = Rect2( 0, 0, 32, 32 )
 shape = SubResource( 1 )
 
 [node name="fov" type="Area2D" parent="."]
+editor/display_folded = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="fov"]
 shape = SubResource( 2 )
